@@ -12,4 +12,5 @@ build:
         name: echo
         code: |
           echo "hello world!"
-          openssl verion
+          yum install openssl -y 
+          openssl version
