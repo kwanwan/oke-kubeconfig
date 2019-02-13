@@ -1,0 +1,14 @@
+# Start with Oracle Linux 7
+box: oraclelinux:7-slim
+
+
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# https://devcenter.wercker.com/development/pipelines/
+build:
+  # https://devcenter.wercker.com/development/steps/
+  steps:
+    - script:
+        name: echo
+        code: |
+          echo "hello world!"
