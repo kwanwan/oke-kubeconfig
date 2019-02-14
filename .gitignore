@@ -1,3 +1,11 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# kenneth development environment
+kenneth*.sh
+
 # Logs
 logs
 *.log

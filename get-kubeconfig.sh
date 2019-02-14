@@ -37,7 +37,8 @@ function oci-curl {
     local now="$(LC_ALL=C \date -u "+%a, %d %h %Y %H:%M:%S GMT")"
     local host=$ENDPOINT
     local body="/dev/null"
-    local target="/api/20180222/clusters/${clusterId}/kubeconfig/content"
+    local target="/20180222/clusters/${clusterId}/kubeconfig/content"
+#    local target="/api/20180222/clusters/${clusterId}/kubeconfig/content"
     local keyId="$tenancyId/$authUserId/$keyFingerprint"
 
     local curl_method="POST";
@@ -46,11 +47,11 @@ function oci-curl {
     local content_type="application/json";
     local content_length="$(wc -c < $body | xargs)";
 
-    # This line will url encode all special characters in the request target except "/", "?", "=", and "&", since those characters are used 
+    # This line will url encode all special characters in the request target except "/", "?", "=", and "&", since those characters are used
     # in the request target to indicate path and query string structure. If you need to encode any of "/", "?", "=", or "&", such as when
     # used as part of a path value or query string key or value, you will need to do that yourself in the request target you pass in.
     local escaped_target="$(echo $( rawurlencode "$target" ))"
-    
+
     local request_target="(request-target): $request_method $escaped_target"
     local date_header="date: $now"
     local host_header="host: $host"
@@ -107,12 +108,18 @@ function rawurlencode {
 function main {
     [[ -z "${1}" ]] && die_usage "Cluster ID must be passed as first argument"
     [[ -z "${ENDPOINT}" ]] && die_usage "environment variable for ENDPOINT must be set"
-    
-    TENANCY=<tenancy_ocid>
-    USERID=<user_id>
-    PRIVATEKEYPATH=oci_api_key.pem
-    FINGERPRINT=<fingerprint>
-    REGION=<region>
+
+#    TENANCY=<tenancy_ocid>
+#    USERID=<user_id>
+#    PRIVATEKEYPATH=oci_api_key.pem
+#    FINGERPRINT=<fingerprint>
+#    REGION=<region>
+
+    TENANCY=${OCITENANTOCID}
+    USERID=${OCIUSEROCID}
+    PRIVATEKEYPATH=/okegetkube/ociapikey.pem
+    FINGERPRINT=${OCIAPIKEYFP}
+    REGION=us-phoenix-1
 
     oci-curl "${TENANCY}" "${USERID}" "${FINGERPRINT}" "${PRIVATEKEYPATH}" "${1}"
 }

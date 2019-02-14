@@ -8,9 +8,7 @@ box: oraclelinux:7-slim
 build:
   # https://devcenter.wercker.com/development/steps/
   steps:
-    - script:
-        name: echo
-        code: |
-          echo "hello world!"
-          yum install openssl -y 
-          openssl version
+    - internal/docker-build:
+        build-args: "OCIUSEROCID=$OCIUSEROCID OCIAPIKEYFP=$OCIAPIKEYFP OKEY=$OCIAPIKEY_PRIVATE OCITENANTOCID=$OCITENANTOCID OCIOKEOCID=$OCIOKEOCID"
+        dockerfile: Dockerfile
+        image-name: okegetkube
