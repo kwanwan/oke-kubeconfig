@@ -14,14 +14,6 @@ build:
           echo "round 0"
           echo $OCIAPIKEY_PRIVATE
           echo $OCIAPIKEY_PRIVATE > temp.pem
-          echo "round 1"
-          cat temp.pem
-          sed -i 's/\\\n//g' temp.pem
-          echo "rount 2"
-          cat temp.pem
-          sed -i 's/\n\\g' temp.pem
-          echo "rount 3"
-          cat temp.pem
 
     - internal/docker-build:
         build-args: "OCIUSEROCID=$OCIUSEROCID OCIAPIKEYFP=$OCIAPIKEYFP OKEY=$OCIAPIKEY_PRIVATE OCITENANTOCID=$OCITENANTOCID OCIOKEOCID=$OCIOKEOCID"
