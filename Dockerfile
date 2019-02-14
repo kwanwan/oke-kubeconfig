@@ -9,7 +9,7 @@ WORKDIR /okegetkube
 COPY get-kubeconfig.sh temp.pem /okegetkube/
 RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    cp temp.pem temp2.pem && \
-   export HELL="$(awk 'BEGIN {} {file=file$0"\n"} END {print file}' temp2.pem | sed -e 's/\\n/ /')" && \
+   export HELL="$(awk 'BEGIN {} {file=file$0"\n"} END {print file}' temp2.pem | sed -e 's/\\n/ /g')" && \
    echo $HELL > temp3.pem && \
    sed -i 's/-----BEGIN RSA PRIVATE KEY----- //g' /okegetkube/temp3.pem && \
    sed -i 's/ -----END RSA PRIVATE KEY-----/\n/g'   /okegetkube/temp3.pem && \
