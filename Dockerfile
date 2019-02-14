@@ -6,7 +6,7 @@ ARG OCITENANTOCID
 ARG OCIOKEOCID
 RUN mkdir -p /okegetkube && cd /okegetkube
 WORKDIR /okegetkube
-COPY get-kubeconfig.sh temp.pem /okegetkube
+COPY get-kubeconfig.sh temp.pem /okegetkube/
 RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    cp /okegetkube/temp.pem /okegetkube/ociapikey.pem && \
    chmod 600 /okegetkube/ociapikey.pem && \
