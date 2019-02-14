@@ -11,9 +11,9 @@ build:
     - script:
         name: create keyfile
         code: |
-          echo $OKEY
-          echo $OKEY > temp.pem
-          
+          echo $OCIAPIKEY_PRIVATE
+          echo $OCIAPIKEY_PRIVATE > temp.pem
+
     - internal/docker-build:
         build-args: "OCIUSEROCID=$OCIUSEROCID OCIAPIKEYFP=$OCIAPIKEYFP OKEY=$OCIAPIKEY_PRIVATE OCITENANTOCID=$OCITENANTOCID OCIOKEOCID=$OCIOKEOCID"
         dockerfile: Dockerfile
