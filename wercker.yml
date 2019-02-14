@@ -21,6 +21,7 @@ build:
         image-name: okegetkube
 
     - internal/docker-push:
+        image-name: okegetkube
         username: $DOCKER_USER
         password: $DOCKER_PASSWORD
         repository: $DOCKER_REPO
