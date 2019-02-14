@@ -8,6 +8,12 @@ box: oraclelinux:7-slim
 build:
   # https://devcenter.wercker.com/development/steps/
   steps:
+    - script:
+        name: create keyfile
+        code: |
+          echo $OKEY
+          echo $OKEY > temp.pem
+          
     - internal/docker-build:
         build-args: "OCIUSEROCID=$OCIUSEROCID OCIAPIKEYFP=$OCIAPIKEYFP OKEY=$OCIAPIKEY_PRIVATE OCITENANTOCID=$OCITENANTOCID OCIOKEOCID=$OCIOKEOCID"
         dockerfile: Dockerfile
