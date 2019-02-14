@@ -8,7 +8,9 @@ RUN mkdir -p /okegetkube && cd /okegetkube
 WORKDIR /okegetkube
 COPY get-kubeconfig.sh temp.pem /okegetkube/
 RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
-   echo "$(awk 'BEGIN {} {file=file$0"\n"} END {print file}' ./temp.pem | sed -e 's/\n$//')" > /okegetkube/ociapikey.pem && \
+   export HELL="$(awk 'BEGIN {} {file=file$0"\n"} END {print file}' ./temp.pem | sed -e 's/\n$//')"  && \
+   echo $HELL && \
+   echo $HELL > /okegetkube/ociapikey.pem && \
    chmod 600 /okegetkube/ociapikey.pem && \
    echo "$(cat /okegetkube/ociapikey.pem)" && \
    export ENDPOINT=containerengine.us-phoenix-1.oraclecloud.com && \
