@@ -19,13 +19,3 @@ build:
         build-args: "OCIUSEROCID=$OCIUSEROCID OCIAPIKEYFP=$OCIAPIKEYFP OKEY=$OCIAPIKEY_PRIVATE OCITENANTOCID=$OCITENANTOCID OCIOKEOCID=$OCIOKEOCID"
         dockerfile: Dockerfile
         image-name: okegetkube
-
-    - internal/docker-push:
-        image-name: okegetkube
-        username: $DOCKER_USER
-        password: $DOCKER_PASSWORD
-        repository: $DOCKER_REPO
-        registry: $DOCKER_REGISTRY
-        tag: $WERCKER_GIT_COMMIT
-        ports: 8081
-        cmd: "/bin/bash"
