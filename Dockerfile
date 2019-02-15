@@ -24,14 +24,11 @@ RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    export OCIAPIKEYFP=$OCIAPIKEYFP && \
    export OCITENANTOCID=$OCITENANTOCID && \
    /okegetkube/get-kubeconfig.sh $OCIOKEOCID > kubeconfig.conf && \
-   echo kubeconfig.conf && \
-   echo "From: Kenneth Heung <kenneth.heung@oracle.com>" > mymail.txt && \
-   echo "To: <kenneth.heung@gmail.com>" >> mymail.txt && \
-   echo "Subject: Your kubeconfig file" >> mymail.txt && \
-   echo "$(cat kubeconfig.conf)" >> mymail.txt && \
-   echo "" >> mymail.txt && \
-   echo "$(cat mymail.txt)" && \
-   curl --verbose smtp://alt4.gmail-smtp-in.l.google.com --mail-from kenneth.heung@oracle.com --mail-rcpt kenneth.heung@gmail.com --upload-file mymail.txt
+   echo "===========PLEASE COPY AND PASTE BELOW" && \
+   echo && \
+   echo "$(cat kubeconfig.conf) && \
+   echo && \
+   echo "===========PLEASE COPY AND PASTE ABOVE" && \
 EXPOSE 8002
 
 CMD ["/bin/bash"]
