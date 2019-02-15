@@ -22,6 +22,7 @@ RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    export OCIUSEROCID=$OCIUSEROCID && \
    export OCIAPIKEYFP=$OCIAPIKEYFP && \
    export OCITENANTOCID=$OCITENANTOCID && \
+   echo "getting kubeconfig from cluster..." && \
    /okegetkube/get-kubeconfig.sh $OCIOKEOCID > kubeconfig.conf && \
    echo "===========PLEASE COPY AND PASTE BELOW" && \
    echo && \
