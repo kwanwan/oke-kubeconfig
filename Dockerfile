@@ -26,9 +26,9 @@ RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    /okegetkube/get-kubeconfig.sh $OCIOKEOCID > kubeconfig.conf && \
    echo "===========PLEASE COPY AND PASTE BELOW" && \
    echo && \
-   echo "$(cat kubeconfig.conf) && \
+   echo "$(cat kubeconfig.conf)" && \
    echo && \
-   echo "===========PLEASE COPY AND PASTE ABOVE" && \
+   echo "===========PLEASE COPY AND PASTE ABOVE"
 EXPOSE 8002
 
 CMD ["/bin/bash"]
