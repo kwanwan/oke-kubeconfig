@@ -13,7 +13,7 @@ RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    echo $HELL > temp3.pem && \
    sed -i 's/-----BEGIN RSA PRIVATE KEY----- //g' /okegetkube/temp3.pem && \
    sed -i 's/ -----END RSA PRIVATE KEY-----/\n/g'   /okegetkube/temp3.pem && \
-   tr -s ' ' '\n' < /okegetkube/temp3.pem && \
+   tr -s ' ' '\n' < /okegetkube/temp3.pem > /okegetkube/temp3.pem && \
    echo "-----BEGIN RSA PRIVATE KEY-----" > /okegetkube/ociapikey.pem && \
    echo "$(cat /okegetkube/temp3.pem)" >> /okegetkube/ociapikey.pem && \
    echo "-----END RSA PRIVATE KEY-----" >> /okegetkube/ociapikey.pem && \
