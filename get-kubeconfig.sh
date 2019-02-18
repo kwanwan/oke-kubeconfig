@@ -119,7 +119,7 @@ function main {
     USERID=${OCIUSEROCID}
     PRIVATEKEYPATH=/okegetkube/ociapikey.pem
     FINGERPRINT=${OCIAPIKEYFP}
-    REGION=us-phoenix-1
+    REGION=${OCIREGION}
 
     oci-curl "${TENANCY}" "${USERID}" "${FINGERPRINT}" "${PRIVATEKEYPATH}" "${1}"
 }

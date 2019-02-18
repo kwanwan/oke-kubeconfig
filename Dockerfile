@@ -4,6 +4,8 @@ ARG OCIAPIKEYFP
 ARG OKEY
 ARG OCITENANTOCID
 ARG OCIOKEOCID
+ARG OCIENDPOINT
+ARG OCIREGION
 RUN mkdir -p /okegetkube && cd /okegetkube
 WORKDIR /okegetkube
 COPY get-kubeconfig.sh temp.pem /okegetkube/
@@ -17,10 +19,11 @@ RUN yum install openssl -y && chmod 700 /okegetkube/get-kubeconfig.sh && \
    echo "$(cat /okegetkube/temp3.pem)" >> /okegetkube/ociapikey.pem && \
    echo "-----END RSA PRIVATE KEY-----" >> /okegetkube/ociapikey.pem && \
    chmod 600 /okegetkube/ociapikey.pem && \
-   export ENDPOINT=containerengine.us-phoenix-1.oraclecloud.com && \
+   export ENDPOINT=$OCIENDPOINT && \
    export OCIUSEROCID=$OCIUSEROCID && \
    export OCIAPIKEYFP=$OCIAPIKEYFP && \
    export OCITENANTOCID=$OCITENANTOCID && \
+   export OCIREGION=$OCIREGION && \
    echo "getting kubeconfig from cluster..." && \
    /okegetkube/get-kubeconfig.sh $OCIOKEOCID > kubeconfig.conf && \
    echo "===========PLEASE COPY AND PASTE BELOW" && \
