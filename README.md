@@ -5,7 +5,7 @@ Tool for downloading `kubeconfig` file from Oracle Container Engine (OKE) for Ku
 This tool need to run as a Wercker build pipeline with the following Wercker variables passed to it during the build time.
 
 ```
-  Key:                  Value:
+  **Key:                  Value:**
   OCIUSEROCID           your OCI user ID
   OCIAPIKEYFP           your API key fingerprint
   OCIAPIKEY_PRIVATE     your API private key created in Lab 100
