@@ -1,6 +1,6 @@
 # oke-kubeconfig
 
-Tool for downloading `kubeconfig` file from Oracle Container Engine for Kubernetes cluster.
+Tool for downloading `kubeconfig` file from Oracle Container Engine (OKE) for Kubernetes cluster.
 
 This tool need to run as a Wercker build pipeline with the following Wercker variables passed to it during the build time.
 
